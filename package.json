@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "desafio-everest",
   "version": "1.0.0",
   "scripts": {
@@ -8,7 +9,9 @@
   "author": "Junior Alves <junior.alves@warren.com.br>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.3",
+    "@brazilian-utils/is-valid-cep": "^0.1.2",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
     "nodemon": "^2.0.15"
   }
 }

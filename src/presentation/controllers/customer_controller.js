@@ -1,7 +1,5 @@
 import { validationResult } from 'express-validator'
-import Customer from '../../domain/user/mocks/user_model.js'
-
-const customers = [];
+import Customers from '../../domain/user/mocks/user_model.js'
 
 class CustomerController {
     
@@ -10,9 +8,19 @@ class CustomerController {
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.mapped() })
         }
-        var newCustomer = new Customer(req.body);
-        customers.push(newCustomer);
-        res.status(200).json({ status: "success", customer_created: newCustomer });
+        
+        const {full_name, email, email_confirmation, cpf, 
+                cellphone, birthdate, email_sms, whatsapp, 
+                country, city, postal_code, address, number} = req.body
+
+        const newCustomer = [full_name, email, email_confirmation, cpf, 
+                cellphone, birthdate, email_sms, whatsapp, 
+                country, city, postal_code, address, number]
+                
+            Customers.push(newCustomer);
+            console.log(Customers)
+
+        res.status(200).end( "success");
     }
 }
 

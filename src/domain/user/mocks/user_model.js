@@ -1,3 +1,5 @@
+const Customer = []
+
 class CustomerModel{
   constructor(body) {
       this.full_name = body.full_name 
@@ -16,4 +18,4 @@ class CustomerModel{
   }
 }
 
-export default CustomerModel;
+export default  Customer;

@@ -3,7 +3,7 @@ import Customers from '../../domain/user/mocks/user_model.js'
 
 class CustomerController {
     
-    handle(req, res, next) {
+    handle(req, res) {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.mapped() })

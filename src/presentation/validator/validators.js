@@ -1,7 +1,9 @@
 import { body } from 'express-validator'
 import isValidCep from '@brazilian-utils/is-valid-cep';
 
-
+function format(num) {
+   return num.replace(/\D/g, "")
+}
 
 const customerValidators = [
                body('full_name')
@@ -15,12 +17,12 @@ const customerValidators = [
 
                body('cpf')
                .isLength({ max: 14})
-               .customSanitizer((value) => value.replace(/\D/g, ""))
+               .customSanitizer(format)
                .matches(`\\d{11}$`),
                
                body('cellphone')
                .isLength({ max: 15 })
-               .customSanitizer((value) => value.replace(/\D/g, ""))
+               .customSanitizer(format)
                .matches(`\\d{${11}}$`),
 
                body('whatsapp')
@@ -44,7 +46,7 @@ const customerValidators = [
 
                body('postal_code')
                .isLength({ max: 9 })
-               .customSanitizer((value) => value.replace(/\D/g, ""))
+               .customSanitizer(format)
                .matches(`\\d{8}$`)
                .custom(async value => {isValidCep(value)}),
 

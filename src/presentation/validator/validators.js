@@ -6,7 +6,7 @@ function format(num) {
 }
 
 const customerValidators = [
-               body('full_name')
+               body('full_name')//
                .trim()
                .escape()
                .isString(),
